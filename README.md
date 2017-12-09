@@ -1,0 +1,36 @@
+# geosocial_analysis
+List of tools that can be used for working with and analyzing geosocial data (e.g. Twitter)
+
+import pandas as pd # Storage and data processing in a tabular environment
+import os # Provides a way of using operating system dependent functionality
+
+## Loads the data file into a pandas dataframe
+def load_data(dataFile):
+    # INPUT: dataFile - location of the file to be read in
+    # OUTPUT: a dataframe from the data
+    # DEPENDENCIES: pandas (import pandas as pd)
+    #               os (import os)
+
+    #Read in the data
+    data_df = pd.read_csv(dataFile,sep='\t',encoding="ISO-8859-1",error_bad_lines=False)
+    # PARAMETERS: sep - separates for identifying one column from the next.
+    #             encoding - for understanding the characters. If the wrong
+    #                        encoding is used some of the text characters in your files may not be read in correctly
+    #             error_bad_lines - setting this to a False values skips lines that have problems being read in.
+    #                               A values of True gives the reverse effect
+    #                               NEED to return to url to find solution of preserving bad lines: https://stackoverflow.com/questions/845058/how-to-get-line-count-cheaply-in-python
+
+    data_df['published_at'] = pd.to_datetime(data_df['published_at'], format="%Y-%m-%d %H:%M:%S UTC") # This line formats the text column
+                                # for time into a time format.
+
+    # This line of code can be used to drop irrelevant columns based on their positions
+    #tweet_df = tweet_df.drop(tweet_df.columns[[13,14]], axis=1) # In this case, columns 13 and 14 are being dropped
+
+    return data_df # This is the outputted dataframe
+
+currentDir = os.path.dirname(__file__) # Gets the location of the current file directory that the present program is being run from
+dataFile = currentDir+'/test.csv' # The location of the data
+                                  # test.csv contains the data
+
+tweet_df = load_data(dataFile) # Calls the function to load the data into a dataframe
+print tweet_df # Prints the dataframe for testing
