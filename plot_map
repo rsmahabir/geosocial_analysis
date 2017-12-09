@@ -1,0 +1,40 @@
+import matplotlib.pyplot as plt # Visualization
+from mpl_toolkits.basemap import Basemap # Visualizing map data
+
+## Plots the data onto a basemap of the world
+def plot_map(longitude, latitude):
+    # INPUT: longitude and latitude columns from a pandas dataframe
+    #        Accepts location coordinates from pandas columns and plots them on a map of the US
+    # OUTPUT: Prints the locations on a basemap. The lower and upper coordinates can be used to set the extent of the map
+    # DEPENDENCIES: mpl_toolkits.basemap (from mpl_toolkits.basemap import Basemap), matplotlib (import matplotlib.pyplot as plt)
+
+
+    m = Basemap(projection='mill', # Projection information
+                llcrnrlat=20, # latitude of lower left hand corner of the desired map domain (degrees)
+                llcrnrlon=-130, # longitude of lower left hand corner of the desired map domain (degree
+                urcrnrlat=50, # latitude of upper right hand corner of the desired map domain (degrees).
+                urcrnrlon=-60, # longitude of upper right hand corner of the desired map domain (degrees).
+                resolution='l')  # resolution of boundary database to use. Can be c (crude), l (low), i (intermediate), h (high), f (full) or None.
+                # Additional information: if no parameters are supplied for the bounding box then the entire globe will be shown
+                # Additional information on Basemap parameters: https://matplotlib.org/basemap/api/basemap_api.html
+
+    m.drawcoastlines() # Draw coastlines
+    m.drawcountries(linewidth=2) #draw country boundaries with a line width of 2
+    m.drawstates(color='b') # Draw state boundaries
+    m.fillcontinents(color = '#888888') # Color of continents
+
+    counter = 0 # Used for tracking the number of points being read in
+    # plotting points
+
+    # Reads each row with points from the pandas dataframe and plots them on a map
+    for lon, lat in zip(longitude, latitude):
+        counter = counter + 1 # Increment counter for every point being read in
+        print counter # Prints to the screen the point being read in as a number from 1 to the total number of points
+        x, y = m.projtran(lon, lat)        # Converts Geographic (lon/lat) to Map Projection (x/y) Coordinates
+        m.plot(x, y, 'r^', markersize=15)  # Adds the point to the map
+
+    plt.show() # Displays the map
+
+    return ''
+    
+    plot_map(tweet_df['x'], tweet_df['y'])
