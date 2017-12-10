@@ -37,4 +37,5 @@ def plot_map(longitude, latitude):
 
     return ''
     
-    plot_map(tweet_df['x'], tweet_df['y'])
+    # Call the function
+    plot_map(data_df['x'], data_df['y'])
