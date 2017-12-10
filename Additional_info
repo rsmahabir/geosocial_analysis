@@ -1,0 +1,6 @@
+# Additional commands that can be used to capture information about the contents and structure of the dataframe
+
+data_df.describe() # Data statistics for each column containing numeric data in the dataframe (i.e. count, mean, standard deviation, minimum, maximum and percentiles)
+data_df.tail() # Prints out information at the bottom of the dataframe (i.e. the tail). To specifiy how much rows to print out, you can add that number within the rounded brackets (e.g. tweet_df.tail(3) for the last three records)
+data_df.shape # Get the number of rows and columns. For examoke the output may look like '(8, 20)', meaning the dataframe has 8 rows and 20 columns
+list(data_df) # Prints the column names of the dataframe as a list
