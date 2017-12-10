@@ -18,7 +18,7 @@ def load_data(dataFile):
     #                               NEED to return to url to find solution of preserving bad lines: https://stackoverflow.com/questions/845058/how-to-get-line-count-cheaply-in-python
 
     data_df['published_at'] = pd.to_datetime(data_df['published_at'], format="%Y-%m-%d %H:%M:%S UTC") # This line formats the text column
-                                # for time into a time format.
+                                # for time into a time format. Formating will vary based on your data.
 
     # This line of code can be used to drop irrelevant columns based on their positions
     #tweet_df = tweet_df.drop(tweet_df.columns[[13,14]], axis=1) # In this case, columns 13 and 14 are being dropped
