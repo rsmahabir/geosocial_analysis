@@ -29,5 +29,5 @@ currentDir = os.path.dirname(__file__) # Gets the location of the current file d
 dataFile = currentDir+'/test.csv' # The location of the data
                                   # test.csv contains the data
 
-tweet_df = load_data(dataFile) # Calls the function to load the data into a dataframe
-print tweet_df # Prints the dataframe for testing
+data_df = load_data(dataFile) # Calls the function to load the data into a dataframe
+print data_df # Prints the dataframe for testing
