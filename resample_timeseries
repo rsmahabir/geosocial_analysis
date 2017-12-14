@@ -1,0 +1,32 @@
+import pandas as pd
+
+
+def resample_timeseries(dataframe,frequency):
+    # INPUT: Dataframe with a date column, frequency at which to resample (See options below)
+    # OUTPUT: resampled timeseries
+
+
+    res = pd.DatetimeIndex(df.published_at).to_series().resample(frequecy).count() #Daily resampling ('published_at' is the pandas column containing the date information)
+
+    # Other sampling frequencies that can be used
+    # Alias	    Description
+    ################################
+    # B	        Business day
+    # D	        Calendar day
+    # W	        Weekly
+    # M	        Month end
+    # Q	        Quarter end
+    # A	        Year end
+    # BA	      Business year end
+    # AS	      Year start
+    # H	        Hourly frequency
+    # T, min	  Minutely frequency
+    # S	        Secondly frequency
+    # L, ms	    Millisecond frequency
+    # U, us	    Microsecond frequency
+    # N, ns	    Nanosecond frequency
+
+    return res
+ 
+    # Resamples the timeseries
+    resample = resample_timeseries(df,'D') # df - dataframe, 'D' - daily frequency
