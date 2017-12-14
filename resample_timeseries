@@ -6,7 +6,7 @@ def resample_timeseries(dataframe,frequency):
     # OUTPUT: resampled timeseries
 
 
-    res = pd.DatetimeIndex(df.published_at).to_series().resample(frequecy).count() #Daily resampling ('published_at' is the pandas column containing the date information)
+    res = pd.DatetimeIndex(df.published_at).to_series().resample(frequency).count() #Daily resampling ('published_at' is the pandas column containing the date information)
 
     # Other sampling frequencies that can be used
     # Alias	    Description
