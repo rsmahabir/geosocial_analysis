@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
 
 def resample_timeseries(dataframe,frequency):
@@ -30,3 +31,4 @@ def resample_timeseries(dataframe,frequency):
  
     # Resamples the timeseries
     resample = resample_timeseries(df,'D') # df - dataframe, 'D' - daily frequency
+    plt.plot(resample) # Plots the new timeseries
